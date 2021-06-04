@@ -1,6 +1,6 @@
 describe('', function () {
+  const chronometer = new Chronometer();
   beforeEach(function () {
-    chronometer = new Chronometer();
   });
 
   describe('constructor function', function () {
@@ -33,6 +33,7 @@ describe('', function () {
 
     afterEach(function () {
       jasmine.clock().uninstall();
+      chronometer.resetClick();
     });
 
     it('Declare a startClick method', function () {
@@ -51,11 +52,12 @@ describe('', function () {
       jasmine.clock().tick(1000);
 
       expect(chronometer.currentTime).toEqual(1);
+
     });
 
     it('after 3 seconds, currentTime should be 3', function () {
       jasmine.clock().tick(3000);
-
+      console.log(chronometer.currentTime);
       expect(chronometer.currentTime).toEqual(3);
     });
   });
